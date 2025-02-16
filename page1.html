@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <link rel="stylesheet" href="page1.css">
+    </head>
+    <body>
+        <h1 id="heading">INST377 - Lab 4</h1>
+            <div class="container">
+                <div>
+                    <form name="nameForm" onsubmit="return alertName()" action="https://www.google.com">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name">
+                        <input type="submit">
+                    </form>  
+                </div>   
+                <div>
+                    <button type="button" onclick="changeColor()">Change Color</button>
+                </div>  
+                <div>
+                    <form name="textModify" onsubmit="return validateText()">
+                        <label for="noSpecial">Text Tester:</label>
+                        <input type="text" id="noSpecial">
+                        <input type="submit" value="Validate Text">
+                    </form>
+                </div>
+                <div>
+                    <button onclick="modifyText()">Modify some Text</button>
+                </div> 
+            </div>
+        <script>
+            function modifyText() {
+                document.getElementById('heading').innerHTML += ' Add Text'
+            }
+
+            function alertName() {
+                alert('Hi '+ document.nameForm.name.value +'!');
+                return false;
+                // Show how changing return or doing no return affects this
+            }
+            function validateText() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                let x = document.forms["textModify"]["noSpecial"].value;
+                if (validation.test(x)) {
+                    alert('There is a special character in your text.');
+                }
+                return false
+            }
+            function changeColor() {
+                if (document.body.style.backgroundColor == "skyblue"){
+                    (document.body.style.backgroundColor = "magenta")
+                } else {
+                    (document.body.style.backgroundColor = "skyblue");
+                }
+            }
+        </script>
+    </body>
+</html>
